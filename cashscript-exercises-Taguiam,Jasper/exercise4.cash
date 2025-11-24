@@ -1,7 +1,11 @@
+/*
+ * Taguiam, Jasper P.
+ * BSCS - 3A
+ */
 pragma cashscript ^0.11.0;
 
 
-contract Exercise4 () {
+contract Exercise4 (pubkey ownerPubkey) {
 
     /*
         make a contract where the user can only spend funds if:
@@ -9,4 +13,7 @@ contract Exercise4 () {
         1. hash of the owner's pubkey matches the public key hash spending parameter
      */
 
+    function spend(bytes20 pubkeyHash) {
+        require(hash160(ownerPubkey) == pubkeyHash);
+    }
 }

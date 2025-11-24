@@ -1,7 +1,11 @@
+/*
+ * Taguiam, Jasper P.
+ * BSCS - 3A
+ */
 pragma cashscript ^0.11.0;
 
 
-contract Exercise3 () {
+contract Exercise3 (string secretString) {
 
     /*
         make a contract where the user can only spend funds if:
@@ -11,4 +15,9 @@ contract Exercise3 () {
         3. the spending amount is exactly 1000 satoshis
      */
 
+    function spend(string inputString) {
+        require(sha256(bytes(secretString)) == sha256(bytes(inputString)));
+        require(tx.outputs.length == 1);
+        require(tx.outputs[0].value == 1000);
+    }
 }

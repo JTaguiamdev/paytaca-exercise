@@ -1,7 +1,11 @@
+/*
+ * Taguiam, Jasper P.
+ * BSCS - 3A
+ */
 pragma cashscript ^0.11.0;
 
 
-contract Exercise1 () {
+contract Exercise1 (int min, int max) {
 
     /*
         make a contract where the user can only spend funds if:
@@ -10,4 +14,8 @@ contract Exercise1 () {
         2. max and min should be declared on the constructor
      */
 
+    function spend(int number) {
+        require(number >= min);
+        require(number <= max);
+    }
 }
